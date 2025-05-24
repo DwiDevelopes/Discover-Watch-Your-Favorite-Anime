@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnimeHub - Discover & Watch Anime</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <a href="#" class="logo">
+                <i class="fas fa-play-circle"></i>
+                AnimeHub
+            </a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li class="nav-link-item">
+                    <a href="#" class="nav-link active">Home</a>
+                </li>
+                <li class="nav-link-item">
+                    <a href="#" class="nav-link">Top Anime</a>
+                </li>
+                <li class="nav-link-item">
+                    <a href="#" class="nav-link">Seasonal</a>
+                </li>
+                <li class="nav-link-item">
+                    <a href="#" class="nav-link">Genres</a>
+                </li>
+                <li class="nav-link-item">
+                    <a href="#" class="nav-link">About</a>
+                </li>
+                <li class="nav-link-item">
+                    <a href="#" class="nav-link">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Discover & Watch Your Favorite Anime</h1>
+            <p class="hero-subtitle">Explore thousands of anime series and movies with detailed information and watch episodes</p>
+            <div class="search-bar">
+                <input type="text" class="search-input" id="mainSearchInput" placeholder="Search for anime...">
+                <button class="search-btn" id="mainSearchBtn"><i class="fas fa-search"></i> Search</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- API Key Input -->
+    <div class="container api-key-container">
+        <h3>Enter Your API Key</h3>
+        <p>To access more features and higher rate limits, please enter your API key (optional).</p>
+        <div class="api-key-form">
+            <input type="text" class="api-key-input" id="apiKeyInput" placeholder="Enter your API key...">
+            <button class="api-key-btn" id="apiKeyBtn">Save</button>
+        </div>
+    </div>
+
+    <!-- Popular Anime Section -->
+    <div class="container">
+        <h2 class="section-title">Popular This Season</h2>
+        <div class="anime-gallery" id="popularAnime">
+            <div class="loading">
+                <div class="spinner"></div>
+                Loading popular anime...
+            </div>
+        </div>
+    </div>
+
+    <!-- Top Rated Anime Section -->
+    <div class="container">
+        <h2 class="section-title">Top Rated Anime</h2>
+        <div class="anime-gallery" id="topAnime">
+            <div class="loading">
+                <div class="spinner"></div>
+                Loading top anime...
+            </div>
+        </div>
+    </div>
+
+    <!-- Anime Slider -->
+    <div class="container">
+        <h2 class="section-title">Featured Anime</h2>
+        <div class="slider-container">
+            <div class="slider" id="featuredSlider">
+                <!-- Slider items will be added by JavaScript -->
+            </div>
+            <div class="slider-controls">
+                <button class="slider-control" id="prevSlide"><i class="fas fa-chevron-left"></i></button>
+                <button class="slider-control" id="nextSlide"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="slider-dots" id="sliderDots">
+                <!-- Dots will be added by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Upcoming Anime Section -->
+    <div class="container">
+        <h2 class="section-title">Upcoming Anime</h2>
+        <div class="anime-gallery" id="upcomingAnime">
+            <div class="loading">
+                <div class="spinner"></div>
+                Loading upcoming anime...
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Results Section (Hidden by default) -->
+    <div class="container search-results" id="searchResults" style="display: none;">
+        <h2 class="section-title">Search Results</h2>
+        <div class="results-count" id="resultsCount"></div>
+        <div class="anime-gallery" id="searchResultsContainer">
+            <!-- Search results will be displayed here -->
+        </div>
+    </div>
+
+    <!-- Anime Details Modal -->
+    <div class="modal" id="animeModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img src="" alt="Anime Backdrop" class="modal-backdrop" id="modalBackdrop">
+                <img src="" alt="Anime Poster" class="modal-poster" id="modalPoster">
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h1 class="modal-title" id="modalTitle"></h1>
+                <div class="modal-meta" id="modalMeta">
+                    <!-- Meta info will be added by JavaScript -->
+                </div>
+                
+                <div class="modal-section">
+                    <h3 class="modal-section-title">Synopsis</h3>
+                    <p class="modal-description" id="modalDescription"></p>
+                </div>
+                
+                <div class="modal-section">
+                    <h3 class="modal-section-title">Information</h3>
+                    <div class="modal-stats" id="modalStats">
+                        <!-- Stats will be added by JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="modal-section" id="trailerSection">
+                    <h3 class="modal-section-title">Trailer</h3>
+                    <iframe class="modal-trailer" id="modalTrailer" allowfullscreen></iframe>
+                </div>
+                
+                <div class="modal-section episodes-container" id="episodesSection">
+                    <h3 class="modal-section-title">Episodes</h3>
+                    <div class="episode-list" id="episodeList">
+                        <!-- Episodes will be added by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Player Modal -->
+    <div class="video-modal" id="videoModal">
+        <div class="video-modal-content">
+            <button class="video-close" id="videoClose">&times;</button>
+            <iframe class="video-player" id="videoPlayer" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <i class="fas fa-play-circle"></i>
+                        AnimeHub
+                    </div>
+                    <p class="footer-about">
+                        AnimeHub is your ultimate destination for discovering and watching anime. 
+                        We provide detailed information about thousands of anime series and movies.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#">Home</a></li>
+                        <li class="footer-link"><a href="#">Top Anime</a></li>
+                        <li class="footer-link"><a href="#">Seasonal Anime</a></li>
+                        <li class="footer-link"><a href="#">Genres</a></li>
+                        <li class="footer-link"><a href="#">News</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3 class="footer-heading">Information</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#">About Us</a></li>
+                        <li class="footer-link"><a href="#">Privacy Policy</a></li>
+                        <li class="footer-link"><a href="#">Terms of Service</a></li>
+                        <li class="footer-link"><a href="#">FAQ</a></li>
+                        <li class="footer-link"><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3 class="footer-heading">Newsletter</h3>
+                    <div class="footer-newsletter">
+                        <input type="email" placeholder="Your email address">
+                        <button type="submit">Subscribe</button>
+                    </div>
+                    <p style="margin-top: 1rem; opacity: 0.8; font-size: 0.9rem;">
+                        Subscribe to our newsletter to get the latest anime news and updates.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 AnimeHub. All rights reserved. Data provided by <a href="https://myanimelist.net/" style="color: var(--primary-color);">MyAnimeList</a>.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script src="js.js"></script>
+</body>
+</html>
