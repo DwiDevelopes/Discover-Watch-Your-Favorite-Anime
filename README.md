@@ -1,4 +1,4 @@
-<img src = "">
+<img src = "Screenshot 2025-05-24 172900.png">
 # AnimeHub 🎥
 
 AnimeHub adalah platform web yang memungkinkan pengguna untuk mencari, menemukan, dan menonton informasi tentang anime favorit mereka. Situs ini menampilkan daftar anime top, musiman, berdasarkan genre, serta informasi mendetail tentang setiap judul.
