@@ -1,4 +1,4 @@
-
+<img src = "">
 # AnimeHub 🎥
 
 AnimeHub adalah platform web yang memungkinkan pengguna untuk mencari, menemukan, dan menonton informasi tentang anime favorit mereka. Situs ini menampilkan daftar anime top, musiman, berdasarkan genre, serta informasi mendetail tentang setiap judul.
